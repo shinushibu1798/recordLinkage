@@ -1,37 +1,23 @@
-## Welcome to GitHub Pages
+## Introduction
+insert here
 
-You can use the [editor on GitHub](https://github.com/shinushibu1798/recordLinkage/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Dataset Overview (contains EDA and cleaning process)
+insert here
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Description of our graphs and how we created it
+insert here
 
-### Markdown
+## Baseline model
+insert here
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Description of our final model
+insert here
 
-```markdown
-Syntax highlighted code block
+## Comparision of our results
+insert here
 
-# Header 1
-## Header 2
-### Header 3
+## Any improvements we could have made
+insert here
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/shinushibu1798/recordLinkage/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Citations
+insert here
