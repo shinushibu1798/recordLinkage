@@ -38,14 +38,14 @@ The other two small datasets contain products and their descriptions from two di
 
 Both the Abt-Buy and Amazon-Google data sets have a variety of missing values in their tables.<br/>
 <b>Abt</b><br/>
-![DBLP](./website_imgs/about_table_nans.PNG)<br/>
+![Abt Table NaN's](./website_imgs/about_table_nan.png)<br/>
 <b>Buy</b><br/>
-![DBLP](./website_imgs/buy_table_nans.PNG)<br/><br/>
+![Buy Table NaN's](./website_imgs/buy_table_nan.png)<br/><br/>
 
 <b>Amazon</b><br/>
-![DBLP](./website_imgs/amazon_nans.PNG)<br/>
+![Amazon Table NaN's](./website_imgs/amazon_nans.PNG)<br/>
 <b>Google</b><br/>
-![DBLP](./website_imgs/google_nans.PNG)
+![Google Table NaN's](./website_imgs/google_nans.PNG)
 
 ### Author Disambiguation Data Set
 
