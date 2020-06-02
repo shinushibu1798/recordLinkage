@@ -12,19 +12,33 @@ Our work on record linkage uses machine learning to incorporate information from
 
 While heterogeneous graphs have been studied and used for record linkage, we use a novel approach which incorporates node2vec, a graph embedding algorithm inspired by word2vec. This algorithm presents the ability to output similar embeddings for nodes with similar contexts.
 
-## Dataset Overview (contains EDA and cleaning process)
---Wesley--
+## Datasets and EDA
+We used a total of 5 data sets for this project - 4 are small data sets from the University of Leipzig that are meant to "toy" with record linkage and a large author disambiguation data set from the KDD Cup 2013 Kaggle competition, which was a challenge to find author entities in data sets that contained information on journals and conferences. We used the small data sets as performance and robustness tests on our framework and saved the large data set as the one we ultimately collect results. The four smaller datasets that we will be looking at are from [Leipzig Universities Database Department](https://dbs.uni-leipzig.de/research/projects/object_matching/benchmark_datasets_for_entity_resolution). Each dataset is sampled from real world examples and the noise in each one varies differently. These datasets are primarily used as benchmarks for testing different entity resolution techniques hence, they will be ideal to evaluate our model. In particular, two of these datasets are directly associated with the author disambiguation data set we will be using for our final implementation, as these datasets deal with linking books and authors. The following datasets follow a similar format, comprising of two separate datasets and a file that describes the matching entities between the two datasets.
+
+### Small Data Sets
+The 4 small data sets we used are: DBLP-ACM, DBLP-Scholar, Abt-Buy, and Amazon-Google.
+
+The two small data sets similar to the Kaggle data set are the DBLP-ACM and DBLP-Scholar data sets - they each contain two data sets, which has information on ID, title of the paper, authors, venue of the conference, and year of publication.
+![DBLP](./website_imgs/dataset_img1.PNG)
+![ACM](./website_imgs/dataset_img2.PNG)
+
+While the DBLP-ACM data set has no missing values, the DBLP-Scholar data set differs.
+| DBLP Table NaN's      | Scholar Table NaN's          |
+| ------------- |:-------------:|
+| ![DBLP Table](./website_imgs/dblp_nans.png){ width=30% }     | ![Scholar Table](./website_imgs/scholar_nans.png){ width=30% }|
+
+The other two small datasets contain products and their descriptions from two different marketplaces. Since 
 
 ## Description of our graphs and how we created it
 --Shinu--
 
-## Baseline model
+## Baseline Models
 --wesley--
 
 ## Description of our final model
 --Shinu--
 
-## Comparison of our results
+## Results
 --Wesley--
 
 ## Any improvements we could have made
