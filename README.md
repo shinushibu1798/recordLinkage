@@ -18,19 +18,19 @@ We used a total of 5 data sets for this project - 4 are small data sets from the
 ### Small Data Sets
 The 4 small data sets we used are: DBLP-ACM, DBLP-Scholar, Abt-Buy, and Amazon-Google.
 
-The two small data sets similar to the Kaggle data set are the DBLP-ACM and DBLP-Scholar data sets - they each contain two data sets, which has information on ID, title of the paper, authors, venue of the conference, and year of publication.
+The two small data sets similar to the Kaggle data set are the DBLP-ACM and DBLP-Scholar data sets - they each contain two data sets, which has information on ID, title of the paper, authors, venue of the conference, and year of publication.\
 <b>DBLP</b>
 ![DBLP](./website_imgs/dataset_img1.PNG)
+<b>ACM</b>
 ![ACM](./website_imgs/dataset_img2.PNG)
 
-While the DBLP-ACM data set has no missing values, the DBLP-Scholar data set differs.
-![DBLP Table NaN's ](./website_imgs/dblp_nans.png)
-![Scholar Table](./website_imgs/scholar_nans.png)
+While the DBLP-ACM data set has no missing values, the DBLP-Scholar data set differs.\
+<b>DBLP Table NaN's</b>
+![DBLP Table NaN's](./website_imgs/dblp_nans.png)
+<b>Scholar Table NaN's</b>
+![Scholar Table NaN's](./website_imgs/scholar_nans.png)
 
 The other two small datasets contain products and their descriptions from two different marketplaces. Unlike the DBLP and author disambiguation data set, there are complex textual features represented by product names and their descriptions.
-
-
-
 
 ## Description of our graphs and how we created it
 --Shinu--
