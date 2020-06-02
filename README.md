@@ -1,23 +1,23 @@
 ## Introduction
-insert here
+--Wesley--
 
 ## Dataset Overview (contains EDA and cleaning process)
-insert here
+--Wesley--
 
 ## Description of our graphs and how we created it
-insert here
+--Shinu--
 
 ## Baseline model
-insert here
+--wesley--
 
 ## Description of our final model
-insert here
+--Shinu--
 
 ## Comparision of our results
-insert here
+--Wesley--
 
 ## Any improvements we could have made
-insert here
+--Shinu--
 
 ## Citations
 insert here
