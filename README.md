@@ -18,13 +18,13 @@ We used a total of 5 data sets for this project - 4 are small data sets from the
 ### Small Data Sets
 The 4 small data sets we used are: DBLP-ACM, DBLP-Scholar, Abt-Buy, and Amazon-Google.
 
-The two small data sets similar to the Kaggle data set are the DBLP-ACM and DBLP-Scholar data sets - they each contain two data sets, which has information on ID, title of the paper, authors, venue of the conference, and year of publication.\
+The two small data sets similar to the Kaggle data set are the DBLP-ACM and DBLP-Scholar data sets - they each contain two data sets, which has information on ID, title of the paper, authors, venue of the conference, and year of publication.<br/>
 <b>DBLP</b>
 ![DBLP](./website_imgs/dataset_img1.PNG)
 <b>ACM</b>
 ![ACM](./website_imgs/dataset_img2.PNG)
 
-While the DBLP-ACM data set has no missing values, the DBLP-Scholar data set differs.\
+While the DBLP-ACM data set has no missing values, the DBLP-Scholar data set differs.<br/>
 <b>DBLP Table NaN's</b>
 ![DBLP Table NaN's](./website_imgs/dblp_nans.png)
 <b>Scholar Table NaN's</b>
