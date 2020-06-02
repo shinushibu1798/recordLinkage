@@ -30,7 +30,25 @@ While the DBLP-ACM data set has no missing values, the DBLP-Scholar data set dif
 <b>Scholar Table NaN's</b><br/>
 ![Scholar Table NaN's](./website_imgs/scholar_nans.PNG)
 
-The other two small datasets contain products and their descriptions from two different marketplaces. Unlike the DBLP and author disambiguation data set, there are complex textual features represented by product names and their descriptions.
+The other two small datasets contain products and their descriptions from two different marketplaces. Unlike the DBLP and author disambiguation data set, there are complex textual features represented by product names and their descriptions. For example, let's look at the Amazon-Google data set.
+<b>Amazon</b>
+![Amazon](./website_imgs/dataset_img3.PNG)
+<b>Google</b>
+![Google](./website_imgs/dataset_img4.PNG)
+
+Both the Abt-Buy and Amazon-Google data sets have a variety of missing values in their tables.
+<b>Abt</b>
+![DBLP](./website_imgs/about_table_nan.PNG)
+<b>Buy</b>
+![DBLP](./website_imgs/buy_table_nan.PNG)
+
+<b>Amazon</b>
+![DBLP](./website_imgs/amazon_nans.PNG)
+<b>Google</b>
+![DBLP](./website_imgs/google_nans.PNG)
+
+### Author Disambiguation Data Set
+
 
 ## Description of our graphs and how we created it
 --Shinu--
