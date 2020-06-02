@@ -26,9 +26,9 @@ The two small data sets similar to the Kaggle data set are the DBLP-ACM and DBLP
 
 While the DBLP-ACM data set has no missing values, the DBLP-Scholar data set differs.<br/>
 <b>DBLP Table NaN's</b>
-![DBLP Table NaN's](./website_imgs/dblp_nans.png)
+![DBLP Table NaN's](./website_imgs/dblp_nans.PNG)
 <b>Scholar Table NaN's</b>
-![Scholar Table NaN's](./website_imgs/scholar_nans.png)
+![Scholar Table NaN's](./website_imgs/scholar_nans.PNG)
 
 The other two small datasets contain products and their descriptions from two different marketplaces. Unlike the DBLP and author disambiguation data set, there are complex textual features represented by product names and their descriptions.
 
