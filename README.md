@@ -133,7 +133,7 @@ Once we had the graphical embedding of our datasets, we used the node2vec model 
 
 For a node <em>n</em>, the goal is to learn a embedding f(n), such that it maximizes the probability of the context for that node, expressed as N<sub>S</sub>(n). The loss function can be expressed as:
 
-$$\max_{f} \Sigma log(P(N_{S}(n)|f(n))$$
+![Example Histogram of Prices](./website_imgs/loss_image.png)
 
 
 In practical terms, this means that if two nodes are presented within a similar context, then the output of the embedder, f(n) should produce similar embeddings. Though this method was originally built for word embedding, where the sentences are treated as the context for the words, the same framework can be extended to graphs by representing paths as stand-ins for a sentence.
