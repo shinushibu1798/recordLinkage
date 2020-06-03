@@ -169,7 +169,7 @@ A SVM classifier attempts to find the decision boundary that maximizes the dista
 ## Results
 --Wesley--
 
-## Any improvements we could have made
+## Improvements we could have made
 
 Since record linkage is very dependent on the dataset, we could use techniques such as fuzzy word matching and hierarchical clustering to make the data more generalised so that it is easier to account for noise between matches in datasets.
 
