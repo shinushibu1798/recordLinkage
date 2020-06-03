@@ -96,7 +96,7 @@ These tokens were used to represent three subgraphs:
 - G<sub>AA</sub>: attribute to attribute
 
 
-As shown by the figure below, we have a unique entity node associated to a sample of attribute nodes. In the context of this problem, we would be treating $G_{EE}$ as being the ground-truth on which we are making our edge predictions. An edge would be formed between entities in the $G_{EE}$ in the case that those 2 entities represent the same object.
+As shown by the figure below, we have a unique entity node associated to a sample of attribute nodes. In the context of this problem, we would be treating G<sub>EE</sub> as being the ground-truth on which we are making our edge predictions. An edge would be formed between entities in the G<sub>EE</sub> in the case that those 2 entities represent the same object.
 
 
 ![ABT BUY-\ Sample Graph](./website_imgs/abt-buy-graph.PNG)
