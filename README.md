@@ -113,13 +113,17 @@ We dealt with ordinal and categorical columns by treating them as discrete value
 ### Quantitative Columns
 
 For the quantitative columns, we decided to bin the data.
-This is because, if we chose to treat them as discrete values, there would be an unreasonably large amount of nodes within the graph and the mathematical notion of proximity would be lost. For example, two rows that have an attribute column price could have values $17 and $18 that would be as equally close as the prices $20 and $30 if treated as discrete values. In order to remedy this issue, we struck a balance by binning our quantitative columns. This allowed us to have a discrete representation while still preserving the notion of mathematical "closeness".
+This is because, if we chose to treat them as discrete values, there would be an unreasonably large amount of nodes within the graph and the mathematical notion of proximity would be lost.
+
+For example, two rows that have an attribute column called price could have values $17 and $18 that would be as equally close to the prices $20 and $30 if treated as discrete values. In order to remedy this issue, we struck a balance by binning our quantitative columns. This allowed us to have a discrete representation while still preserving the notion of mathematical "closeness".
 
 We experimented with two strategies for binning:
 1. equal-length bins
 2. equal-density bins
 
-The 'equal-length bins' is essentially equivalent to following a histogram approximation of the quantitative variable. This naturally has the downside of creating bins that are very dense and very sparse. The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
+The 'equal-length bins' is essentially equivalent to following a histogram approximation of the quantitative variable. This naturally has the downside of creating bins that are very dense and very sparse.
+
+The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
 
 ![Example Histogram of Prices](./website_imgs/price_hist.png){ width=50%}
 
