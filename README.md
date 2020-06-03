@@ -184,7 +184,7 @@ A SVM classifier attempts to find the decision boundary that maximizes the dista
 
 
 ## Results
---Wesley--
+![Results](./website_imgs/results_img1.PNG)
 
 ## Improvements we could have made
 
