@@ -154,8 +154,8 @@ We believe that the Node2Vec algorithm is appropriate for our task, because of t
 ## Baseline Models
 As with all machine learning pipelines, it's important to create baseline models to create baseline scores to measure final performance against. Using the data sets, we made some baseline models that did not depend on graphs. With the Amazon-Google, DBLP-ACM, DBLP Scholars, and Author Disambiguation dataset, we made rudimentary baseline models that use deterministic record linkage. Unsurprisingly, the baseline models depended heavily on the cleanliness of the datasets, as basic deterministic rules were used, such as checking if the titles of books matched. For the Abt-Buy dataset, we decided to create an advanced baseline that incorporates some machine learning, rather than use strict rules. In all of the baselines, we used the ground truth matches as positive examples and randomly sampled an equal number of negative examples.
 
-![Baseline Accuracies](./website_imgs/baseline_img1.PNG)<br/>
-<em>Our baseline accuracy results.</em>
+<center><img src="./website_imgs/baseline_img1.PNG"/></center>
+<center><em>Our baseline accuracy results.</em></center>
 
 With the DBLP-ACM dataset, the baseline was performed by checking the lower case titles from both datasets, as well as checking the year, to determine whether entities matched. Since the dataset has no missing values in either of these columns, this baseline performed extremely well, getting 100% accuracy. This is to be expected given the lack of missingness as well as the lack of 1-to-many entity matches. Clearly, the Author Disambiguation data set we use for our final implementation will not be this clean, and therefore this simplistic baseline should not perform nearly as well.
 
@@ -173,7 +173,7 @@ Finally, we moved on to training our binary model. We decided to use two differe
 ### Support Vector Machines
 A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the goal is to solve the optimization problem (where W is the margin between the support vectors, and &Zeta is the slackness parameter):
 
-<center><img src="./website_imgs/svm.png" width="500"/></center>
+<center><img src="./website_imgs/svm.png" width="350"/></center>
 
 
 A SVM classifier attempts to find the decision boundary that maximizes the distance to the closest data point from each class, which is also considered a support vector. Because the data may not linearly separable, kernels and the slackness parameter can be used to increase the performance of the model.
