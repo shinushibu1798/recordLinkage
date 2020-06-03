@@ -125,7 +125,7 @@ The 'equal-length bins' is essentially equivalent to following a histogram appro
 
 The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
 </br>
-<center><img src="./website_imgs/price_hist.png" width="400"/></center>
+<center><img src="./website_imgs/price_hist.png" width="600"/></center>
 
 ### Node2Vec
 
@@ -141,7 +141,7 @@ In practical terms, this means that if two nodes are presented within a similar 
 
 A flaw, however, is that there is no natural understanding of the what constitutes a reliable sample of paths within a graph. The node2vec architecture answers this issue with the idea of a parameterized random walk. This is essentially a method for sampling a path by creating a probability distribution parameterized by p (controlling the likelihood of returning to a previous node), and q (controlling how far to move away from the current node)
 
-![Sampling Distribution](./website_imgs/node2vec_prob_dist.png)
+<center><img src="./website_imgs/node2vec_prob_dist.png" width="350"/></center>
 
 This sampling algorithm can be thought of as a hybrid of the traditional graph traversal algorithms, DFS and BFS. An example of this is below.
 
