@@ -67,15 +67,15 @@ Number of instances in the conference dataset - 15,151
 
 The paper, author and paper-author datasets, are very important for our problem, with varying degrees of missingness for each of its columns.
 
-![null values in author dataset](./images/author-dataset-null.PNG)
+![null values in author dataset](./website_imgs/author-dataset-null.PNG)
 
 As shown by the above bar chart, the authors dataset has the highest number of missing values (60%) in the affiliation column. The name column comes in second with only 7 percent of its data missing. The ID column has no missing values.
 
-![null values in paper dataset](./images/paper-dataset-null.PNG)
+![null values in paper dataset](./website_imgs/paper-dataset-null.PNG)
 
 The paper dataset has the highest number of missing values (76%) in the keyword column. The title column has the second highest number of missing values with 7% of its data missing. The other columns do not have any missing values.
 
-![null values in paper-author dataset](./images/paper-author-dataset-null.PNG)
+![null values in paper-author dataset](./website_imgs/paper-author-dataset-null.PNG)
 
 The affiliation column in the paper-author dataset has the highest number of missing values (65%). The only other column in the dataset that has any missing values is Name. Only 0.002 percent of the Name attribute is missing.
 
