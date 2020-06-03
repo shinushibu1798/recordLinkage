@@ -91,9 +91,9 @@ The missing values in the columns will play large part as more missing values re
 Next, we converted our datasets into graphs. In order to do so, we translated each column of our datasets into discrete tokens.
 
 These tokens were used to represent three subgraphs:
-- $G_{EE}$: entity to entity
-- $G_{EA}$: entity "is a" attribute
-- $G_{AA}$: attribute to attribute
+- G<sub>EE</sub>: entity to entity
+- G<sub>EA</sub>: entity "is a" attribute
+- G<sub>AA</sub>: attribute to attribute
 
 
 As shown by the figure below, we have a unique entity node associated to a sample of attribute nodes. In the context of this problem, we would be treating $G_{EE}$ as being the ground-truth on which we are making our edge predictions. An edge would be formed between entities in the $G_{EE}$ in the case that those 2 entities represent the same object.
@@ -131,12 +131,12 @@ The 'equal-density bins' allows for the formation of *k* bins where the bins are
 
 Once we had the graphical embedding of our datasets, we used the node2vec model in order to create a feature representation. The Node2Vec algorithm was originally proposed by Aditya Grover and Jure Leskovec of Stanford University. It heavily relied on the idea of Word2Vec, which attempts to embed text into a Euclidian space based on the context that that word tends to use.
 
-For a node <em>n</em>, the goal is to learn a embedding f(n), such that it maximizes the probability of the context for that node, expressed as $N_{S}(n)$. The loss function can be expressed as:
+For a node <em>n</em>, the goal is to learn a embedding f(n), such that it maximizes the probability of the context for that node, expressed as N<sub>S</sub>(n). The loss function can be expressed as:
 
 $$\max_{f} \Sigma log(P(N_{S}(n)|f(n))$$
 
 
-In practical terms, this means that if two nodes are presented within a similar context, then the output of the embedder, $f(n)$ should produce similar embeddings. Though this method was originally built for word embedding, where the sentences are treated as the context for the words, the same framework can be extended to graphs by representing paths as stand-ins for a sentence.
+In practical terms, this means that if two nodes are presented within a similar context, then the output of the embedder, f(n) should produce similar embeddings. Though this method was originally built for word embedding, where the sentences are treated as the context for the words, the same framework can be extended to graphs by representing paths as stand-ins for a sentence.
 
 A flaw, however, is that there is no natural understanding of the what constitutes a reliable sample of paths within a graph. The node2vec architecture answers this issue with the idea of a parameterized random walk. This is essentially a method for sampling a path by creating a probability distribution parameterized by p (controlling the likelihood of returning to a previous node), and q (controlling how far to move away from the current node)
 
