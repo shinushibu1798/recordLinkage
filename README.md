@@ -51,7 +51,19 @@ Both the Abt-Buy and Amazon-Google data sets have a variety of missing values in
 
 
 ## Description of our graphs and how we created it
---Shinu--
+Next, we converted our datasets into graphs. In order to do so, we translated each column of our datasets into discrete tokens.
+
+These tokens were used to represent three subgraphs:
+- $G_{EE}$: entity to entity
+- $G_{EA}$: entity "is a" attribute
+- $G_{AA}$: attribute to attribute
+
+Here, an entity represents an unique row and a attribute represents a column value.
+
+As shown by the figure below, we have a unique entity node associated to a sample of attribute nodes. In the context of this problem, we would be treating $G_{EE}$ as being the ground-truth on which we are making our edge predictions. An edge would be formed between entities in the $G_{EE}$ in the case that those 2 entities represent the same object.
+
+[[https://infogram.com/abt-buy-sample-graph-1h7v4p10k8pd4k0?live]]
+
 
 ## Baseline Models
 --wesley--
