@@ -123,7 +123,7 @@ The 'equal-length bins' is essentially equivalent to following a histogram appro
 
 ![Example Histogram of Prices](./images/price_hist.png){ width=50%}
 
-## Node2Vec
+### Node2Vec
 
 Once we had the graphical embedding of our datasets, we used the node2vec model in order to create a feature representation. The Node2Vec algorithm is originally proposed by Aditya Grover and Jure Leskovec of Stanford University. It heavily relies on the idea of Word2Vec, which attempts to embed text into a Euclidian space based on the context that that word tends to be used.
 
