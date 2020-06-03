@@ -1,8 +1,8 @@
 ## Introduction
 Imagine you work at a hospital. You are treating a patient named John Doe and you need to look up his medical records. Upon searching the database, you stumble across this:
-
-![](./website_imgs/intro_img1.PNG)
-
+</br>
+<center><img src="./website_imgs/intro_img1.PNG"/></center>
+</br>
 How can we tell if John Doe from Hospital A is referring to the same John Doe from Hospital B? This is an example of a record linkage problem, the process of finding records across different data sets that correspond to the same entity. Without a distinct identifier (think ID for each patient) for an entity, this becomes a non-trivial problem. In our current age of big data, where data is becoming increasingly large and heterogeneous, being able to merge multiple datasets together accurately is an important task.  
 
 There are two primary schools of thought when it comes record linkage - deterministic record linkage and probabilistic record linkage. Deterministic record linkage uses rule-based algorithms, predicting that two records refer to the same entity if certain rules or thresholds are met. For example, one might say two records of patients from two different hospital data sets refer to the same entity if the name, date of birth, and city match exactly. As we can see from the example above, data sets can be noisy - different establishments may have different conventions for inputting data. Other forms of noise can come from missing data entries, incorrect data entries, or duplicate records. Clearly, deterministic record linkage will be difficult if the data is not clean.
@@ -124,8 +124,8 @@ We experimented with two strategies for binning:
 The 'equal-length bins' is essentially equivalent to following a histogram approximation of the quantitative variable. This naturally has the downside of creating bins that are very dense and very sparse.
 
 The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
-
-![Example Histogram of Prices](./website_imgs/price_hist.png)
+</br>
+<center><img src="./website_imgs/price_hist.png"/></center></br>
 
 ### Node2Vec
 
@@ -133,7 +133,8 @@ Once we had the graphical embedding of our datasets, we used the node2vec model 
 
 For a node <em>n</em>, the goal is to learn a embedding f(n), such that it maximizes the probability of the context for that node, expressed as N<sub>S</sub>(n). The loss function can be expressed as:
 
-![Example Histogram of Prices](./website_imgs/loss_image.png)
+<center><img src="./website_imgs/loss_image.png" width="400"/></center>
+
 
 
 In practical terms, this means that if two nodes are presented within a similar context, then the output of the embedder, f(n) should produce similar embeddings. Though this method was originally built for word embedding, where the sentences are treated as the context for the words, the same framework can be extended to graphs by representing paths as stand-ins for a sentence.
@@ -153,10 +154,10 @@ We believe that the Node2Vec algorithm is appropriate for our task, because of t
 
 ## Baseline Models
 As with all machine learning pipelines, it's important to create baseline models to create baseline scores to measure final performance against. Using the data sets, we made some baseline models that did not depend on graphs. With the Amazon-Google, DBLP-ACM, DBLP Scholars, and Author Disambiguation dataset, we made rudimentary baseline models that use deterministic record linkage. Unsurprisingly, the baseline models depended heavily on the cleanliness of the datasets, as basic deterministic rules were used, such as checking if the titles of books matched. For the Abt-Buy dataset, we decided to create an advanced baseline that incorporates some machine learning, rather than use strict rules. In all of the baselines, we used the ground truth matches as positive examples and randomly sampled an equal number of negative examples.
-
+</br>
 <center><img src="./website_imgs/baseline_img1.PNG"/></center>
 <center><em>Our baseline accuracy results.</em></center>
-
+</br>
 With the DBLP-ACM dataset, the baseline was performed by checking the lower case titles from both datasets, as well as checking the year, to determine whether entities matched. Since the dataset has no missing values in either of these columns, this baseline performed extremely well, getting 100% accuracy. This is to be expected given the lack of missingness as well as the lack of 1-to-many entity matches. Clearly, the Author Disambiguation data set we use for our final implementation will not be this clean, and therefore this simplistic baseline should not perform nearly as well.
 
 With the DBLP-Scholar dataset, the baseline was performed by just checking the lower case titles from both datasets, as the year column has a large number of missing values. While the baseline gets every negative example correct, it only gets 47% of positive examples, for a total accuracy of 73%. With a single feature, this baseline performs poorly, but it is interesting to note that simply comparing lower case titles will achieve high accuracy on negative examples.
