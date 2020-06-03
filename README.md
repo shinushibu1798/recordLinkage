@@ -107,7 +107,7 @@ There were many different types of columns to deal with in each of the datasets.
 
 We dealt with ordinal and categorical columns by treating them as discrete values. For example, for textual analysis, we used a bagofwords approach in which each word is tokenized and embedded as discrete values. The sentence 'A blue car' would represent an edge to 'a', 'blue', and 'car' nodes and its respective entity node. In the effort of not allowing the size of our graph to explode, we removes words that were highly common by creating a cap on document frequency of any token in our vocabulary. This document frequency cap ignores the words that show up in a large number of entities, thus likely being less predictive. In the example of textual embedding, we believe that a bag of words approach is reasonable. Our task is in principle pattern matching, therefore the content of the text is naturally more useful than the sentiment or syntax of the text. An example of textual embedding can be seen in the figure below.
 
-![Example Textual Embedding](./website_imgs/example_textual_embedding.png){ width=70%}
+![Example Textual Embedding](./website_imgs/example_textual_embedding.png)
 
 
 ### Quantitative Columns
@@ -125,7 +125,7 @@ The 'equal-length bins' is essentially equivalent to following a histogram appro
 
 The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
 
-![Example Histogram of Prices](./website_imgs/price_hist.png){ width=50%}
+![Example Histogram of Prices](./website_imgs/price_hist.png)
 
 ### Node2Vec
 
@@ -140,15 +140,15 @@ In practical terms, this means that if two nodes are presented within a similar 
 
 A flaw, however, is that there is no natural understanding of the what constitutes a reliable sample of paths within a graph. The node2vec architecture answers this issue with the idea of a parameterized random walk. This is essentially a method for sampling a path by creating a probability distribution parameterized by p (controlling the likelihood of returning to a previous node), and q (controlling how far to move away from the current node)
 
-![Sampling Distribution](./website_imgs/node2vec_prob_dist.png){ width=40%}
+![Sampling Distribution](./website_imgs/node2vec_prob_dist.png)
 
 This sampling algorithm can be thought of as a hybrid of the traditional graph traversal algorithms, DFS and BFS. An example of this is below.
 
-![Node2Vec Sampling Diagram](./website_imgs/node2vec_plot.png){ width=40%}
+![Node2Vec Sampling Diagram](./website_imgs/node2vec_plot.png)
 
 We believe that the Node2Vec algorithm is appropriate for our task, because of the intuition that two entities where the ground-truth is that they are the same should have a similar environment within the graph. For example, in the figure below, the two embeddings share similar features, such as 'Linksys' and 'switch'. Therefore, we can expect the 'community' that is found by the Random Walk algorithm to be more similar between these two nodes than a random sample of nodes.
 
-![Node2Vec Sampling Diagram](./website_imgs/node2vec_example.png){ width=40%}
+![Node2Vec Sampling Diagram](./website_imgs/node2vec_example.png)
 
 
 ## Baseline Models
@@ -175,9 +175,9 @@ A SVM classifier attempts to find the decision boundary that maximizes the dista
 
 ## Improvements we could have made
 
-Since record linkage is very dependent on the dataset, we could use techniques such as fuzzy word matching and hierarchical clustering to make the data more generalised so that it is easier to account for noise between matches in datasets.
+Since record linkage is very dependent on the dataset, we could use techniques such as fuzzy word matching and hierarchical clustering to make the data more generalized so that it is easier to account for noise between matches in datasets.
 
-For the node2vec implementation, we made a naïve assumption that out sampling technique would simply translate over. However, this was not the case. Hence we would improve our model by refining our definition of a community to better fit this task rather than expect it to readily fit it as it is.
+For the node2vec implementation, we made a naïve assumption that our sampling technique would simply translate over and be able to accurately represent our features. However, this was not the case. Hence we would improve our model by refining our definition of a community to better fit this task rather than expect it to readily fit.
 
 
 ## Citations
