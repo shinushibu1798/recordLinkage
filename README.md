@@ -171,15 +171,40 @@ Lastly, with the Author Disambiguation data set, we used a baseline that simply 
 Finally, we moved on to training our binary model. We decided to use two different models: Support Vector Machines(SVM) and Boosted Decision Trees or more specifically, AdaBoost.
 
 ### Support Vector Machines
-A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the goal is to solve the optimization problem (where W is the margin between the support vectors, and \zeta is the slackness parameter):
+A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the goal is to solve the optimization problem (where W is the margin between the support vectors, and &Zeta is the slackness parameter):
 
-![SVM](./website_imgs/svm.png)<br/>
+![SVM](./website_imgs/svm.png =100x20)<br/>
 
 A SVM classifier attempts to find the decision boundary that maximizes the distance to the closest data point from each class, which is also considered a support vector. Because the data may not linearly separable, kernels and the slackness parameter can be used to increase the performance of the model.
 
 ### Boosted Decision Trees/AdaBoost
 
+The AdaBoost algorithm, was developed by Robert Schapire and UCSD professor Yoav Freud in 2003. The motivation for using this algorithm is that it tests out of the pipeline with a decision tree algorithm, and boosted trees tend to have positive properties of being difficult to overfit.
 
+### Hyperparameters
+
+A major component of our pipeline is an inordinate amount of hyperparameter tuning throughout our pipeline. Within the graph embedding step, there are hyperparameters associated with the textual embedding and quantitiative binning. Likewise, in the Node2Vec algorithm, there are hyperparameters for the sampling strategy and output vector size. Lastly, there are hyperparameters for our traditional machine learning models.
+
+A shortlist of hyperparameters associated with our model is:
+
+ - Text Embedding Maximum Document Frequency
+ - Number of Bins for Quantitative feature embedding
+ - Node2vec Q value
+ - Node2vec P value
+ - Node2vec Output Vector Size
+ - Node2Vec Walk Length
+ - Node2Vec Number of Walks Taken
+ - Node2Vec Negative Sampling Rate
+ - SVM C value
+ - Number of Estimators (for AdaBoost)
+
+This large amount of hyperparameters made it difficult to gauge the results of our model and to debug the pipeline.
+
+The maximum document frequency and number of bins affect how the original dataset is represented in the graph construction. This affectively acts as a determination of what representation maximizes the signal while allowing for limited noise. For example, if we allowed all textual tokens to be represented, we are introducing many simple words like "the", "a", "and" that are affectively noise. On the flip side, removing too many terms may remove terms that are highly predictive. Likewise, with a quantitative variable, the choice of the number of bins dictates how precise we want our representation to be in order.
+
+For Node2Vec, the hyperparameters dictate the size of our embedding space and a parameterized definition of a neighborhood. For example, the p and q hyperparameters control the random steps being taken in the *Random Walk* algorithm. Similarly, the walk length controls for the relative size of the neighborhood. Therefore, by changing these values, we are modifying our definition of what a 'neighborhood' means within the context of a graph.
+
+Lastly, the SVM's C value and AdaBoost's number of estimators represents the bias-variance trade-off for our model. In other terms, these hyperparameters control the tension between fitting the training data and making the model be generalizable to new data.
 
 
 ## Results
