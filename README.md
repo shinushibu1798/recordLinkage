@@ -154,7 +154,7 @@ We believe that the Node2Vec algorithm is appropriate for our task, because of t
 Finally, we moved on to training our binary model. We decided to use two different models: Support Vector Machines(SVM) and Boosted Decision Trees or more specifically, AdaBoost.
 
 ### Support Vector Machines
-A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the the goal is to solve the optimization problem (where W is the margin between the support vectors, and $\zeta_i$ is the slackness parameter):
+A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the goal is to solve the optimization problem (where W is the margin between the support vectors, and $\zeta_i$ is the slackness parameter):
 
 $$minimie \,  (1/n)\,\sum_{i=1}^{n} \zeta_{i}\, + \lambda \, \|W\|$$
 $$Subjuct \, to \, y_{i}(w * x_{i} - b) > 1 - \zeta_{i}$$
@@ -170,7 +170,11 @@ A SVM classifier attempts to find the decision boundary that maximizes the dista
 --Wesley--
 
 ## Any improvements we could have made
---Shinu--
+
+Since record linkage is very dependent on the dataset, we could use techniques such as fuzzy word matching and hierarchical clustering to make the data more generalised so that it is easier to account for noise between matches in datasets.
+
+For the node2vec implementation, we made a naïve assumption that out sampling technique would simply translate over. However, this was not the case. Hence we would improve our model by refining our definition of a community to better fit this task rather than expect it to readily fit it as it is.
+
 
 ## Citations
 - pdfs.semanticscholar.org/2404/eb5760ec2925c075c7968c845d2cc6fda73b.pdf.
