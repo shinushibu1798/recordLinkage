@@ -186,6 +186,9 @@ A SVM classifier attempts to find the decision boundary that maximizes the dista
 ## Results
 ![Results](./website_imgs/results_img1.PNG)
 
+Our final results are as shown. For the results, we measured performance using accuracy, as well as precision and recall. Precision and recall is especially important in our problem because the classes are heavily imbalanced – there are few entity matches compared to non-matches. If we take a look at this example where we take 3 rows from two tables with a single match, we can see the imbalance. In this case, there is 1 match compared to 8 non-matches – this scales up as we use more data.  
+
+![Results](./website_imgs/results_img2.PNG)
 ## Improvements we could have made
 
 Since record linkage is very dependent on the dataset, we could use techniques such as fuzzy word matching and hierarchical clustering to make the data more generalized so that it is easier to account for noise between matches in datasets.
