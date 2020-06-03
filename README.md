@@ -174,7 +174,7 @@ Finally, we moved on to training our binary model. We decided to use two differe
 A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the goal is to solve the optimization problem (where W is the margin between the support vectors, and &Zeta is the slackness parameter):
 
 ![SVM](./website_imgs/svm.png)<br/>
-<img src="svm.png" width="200"/>
+<img src="./website_imgs/svm.png" width="200"/>
 
 
 A SVM classifier attempts to find the decision boundary that maximizes the distance to the closest data point from each class, which is also considered a support vector. Because the data may not linearly separable, kernels and the slackness parameter can be used to increase the performance of the model.
