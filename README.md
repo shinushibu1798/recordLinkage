@@ -131,7 +131,7 @@ The 'equal-density bins' allows for the formation of *k* bins where the bins are
 
 Once we had the graphical embedding of our datasets, we used the node2vec model in order to create a feature representation. The Node2Vec algorithm was originally proposed by Aditya Grover and Jure Leskovec of Stanford University. It heavily relied on the idea of Word2Vec, which attempts to embed text into a Euclidian space based on the context that that word tends to use.
 
-For a node $n$, the goal is to learn a embedding $f(n)$, such that it maximizes the probability of the context for that node, expressed as $N_{S}(n)$. The loss function can be expressed as:
+For a node <em>n</em>, the goal is to learn a embedding f(n), such that it maximizes the probability of the context for that node, expressed as $N_{S}(n)$. The loss function can be expressed as:
 
 $$\max_{f} \Sigma log(P(N_{S}(n)|f(n))$$
 
