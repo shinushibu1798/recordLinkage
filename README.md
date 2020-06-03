@@ -69,11 +69,11 @@ The paper, author and paper-author datasets, are very important for our problem,
 
 ![null values in author dataset](./images/author-dataset-null.PNG)
 
-As shown by the above bar chart, the authors dataset has the highest number of missing values(60%) in the affiliation column. The name column comes in second with only 7 percent of its data missing. The ID column has no missing values.
+As shown by the above bar chart, the authors dataset has the highest number of missing values (60%) in the affiliation column. The name column comes in second with only 7 percent of its data missing. The ID column has no missing values.
 
 ![null values in paper dataset](./images/paper-dataset-null.PNG)
 
-The paper dataset has the highest number of missing values(76%) in the keyword column. The title column has the second highest number of missing values with 7% of its data missing. The other columns do not have any missing values.
+The paper dataset has the highest number of missing values (76%) in the keyword column. The title column has the second highest number of missing values with 7% of its data missing. The other columns do not have any missing values.
 
 ![null values in paper-author dataset](./images/paper-author-dataset-null.PNG)
 
