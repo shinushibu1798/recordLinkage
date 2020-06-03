@@ -1,13 +1,11 @@
 ## Introduction
 Imagine you work at a hospital. You are treating a patient named John Doe and you need to look up his medical records. Upon searching the database, you stumble across this:
-</br>
-<center><img src="./website_imgs/intro_img1.PNG"/></center>
-</br>
+<center><img src="./website_imgs/intro_img1.PNG"/></center></br>
 How can we tell if John Doe from Hospital A is referring to the same John Doe from Hospital B? This is an example of a record linkage problem, the process of finding records across different data sets that correspond to the same entity. Without a distinct identifier (think ID for each patient) for an entity, this becomes a non-trivial problem. In our current age of big data, where data is becoming increasingly large and heterogeneous, being able to merge multiple datasets together accurately is an important task.  
 
 There are two primary schools of thought when it comes record linkage - deterministic record linkage and probabilistic record linkage. Deterministic record linkage uses rule-based algorithms, predicting that two records refer to the same entity if certain rules or thresholds are met. For example, one might say two records of patients from two different hospital data sets refer to the same entity if the name, date of birth, and city match exactly. As we can see from the example above, data sets can be noisy - different establishments may have different conventions for inputting data. Other forms of noise can come from missing data entries, incorrect data entries, or duplicate records. Clearly, deterministic record linkage will be difficult if the data is not clean.
 
-![](./website_imgs/intro_img3.PNG)<br/>
+<center><img src="./website_imgs/intro_img3.PNG" width="700"/></center><br/>
 <em>An example of deterministic record linkage using book title and year published.</em>
 
 On the other hand, probabilistic record linkage weights columns differently, depending on their ability to predict whether records refer to the same entity. Using these weights, a probability is calculated for two records corresponding to the same entity. While this is a more robust framework than deterministic record linkage, this is still heavily reliant on clean data. Previous research on record linkage have studied these approaches, incorporating methods from NLP/linguistics, as well as using machine learning.
@@ -16,7 +14,7 @@ Our work on record linkage uses machine learning to incorporate information from
 
 While heterogeneous graphs have been studied and used for record linkage, we use a novel approach which incorporates node2vec, a graph embedding algorithm inspired by word2vec. This algorithm presents the ability to output similar embeddings for nodes with similar contexts. Our project will consist of three main parts: constructing heterogeneous graphs from the data sets, using graph embeddings, and training a machine learning model.
 
-![](./website_imgs/intro_img2.PNG)
+<center><img src="./website_imgs/intro_img2.PNG" width="700"/></center><br/>
 
 ## Datasets and EDA
 We used a total of 5 data sets for this project - 4 are small data sets from the University of Leipzig that are meant to "toy" with record linkage and a large Author Disambiguation data set from the KDD Cup 2013 Kaggle competition, which was a challenge to find author entities in data sets that contained information on journals and conferences. We used the small data sets as performance and robustness tests on our framework and saved the large data set as the one we ultimately collect results. The four smaller datasets that we will be looking at are from [Leipzig Universities Database Department](https://dbs.uni-leipzig.de/research/projects/object_matching/benchmark_datasets_for_entity_resolution). Each dataset is sampled from real world examples and the noise in each one varies differently. These datasets are primarily used as benchmarks for testing different entity resolution techniques hence, they will be ideal to evaluate our model. In particular, two of these datasets are directly associated with the Author Disambiguation data set we will be using for our final implementation, as these datasets deal with linking books and authors. The following datasets follow a similar format, comprising of two separate datasets and a file that describes the matching entities between the two datasets.
@@ -73,15 +71,15 @@ Number of instances in the conference dataset - 15,151
 
 The paper, author and paper-author datasets, are very important for our problem, with varying degrees of missingness for each of its columns.
 
-![null values in author dataset](./website_imgs/author-dataset-null.PNG)
+<center><img src="./website_imgs/author-dataset-null.PNG" width="700"/></center><br/>
 
 As shown by the above bar chart, the authors dataset has the highest number of missing values (60%) in the affiliation column. The name column comes in second with only 7 percent of its data missing. The ID column has no missing values.
 
-![null values in paper dataset](./website_imgs/paper-dataset-null.PNG)
+<center><img src="./website_imgs/paper-dataset-null.PNG" width="700"/></center><br/>
 
 The paper dataset has the highest number of missing values (76%) in the keyword column. The title column has the second highest number of missing values with 7% of its data missing. The other columns do not have any missing values.
 
-![null values in paper-author dataset](./website_imgs/paper-author-dataset-null.PNG)
+<center><img src="./website_imgs/paper-author-dataset-null.PNG" width="700"/></center><br/>
 
 The affiliation column in the paper-author dataset has the highest number of missing values (65%). The only other column in the dataset that has any missing values is Name. Only 0.002 percent of the Name attribute is missing.
 
@@ -98,8 +96,7 @@ These tokens were used to represent three subgraphs:
 
 As shown by the figure below, we have a unique entity node associated to a sample of attribute nodes. In the context of this problem, we would be treating G<sub>EE</sub> as being the ground-truth on which we are making our edge predictions. An edge would be formed between entities in the G<sub>EE</sub> in the case that those 2 entities represent the same object.
 
-
-![ABT BUY-\ Sample Graph](./website_imgs/abt-buy-graph.PNG)
+<center><img src="./website_imgs/abt-buy-graph.PNG"/></center><br/>
 
 There were many different types of columns to deal with in each of the datasets. We transformed these columns into usable data by identifying what type of variables they were and then applying a function to convert the columns into a usable format.
 
@@ -124,8 +121,7 @@ We experimented with two strategies for binning:
 The 'equal-length bins' is essentially equivalent to following a histogram approximation of the quantitative variable. This naturally has the downside of creating bins that are very dense and very sparse.
 
 The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
-</br>
-<center><img src="./website_imgs/price_hist.png" width="600"/></center>
+<center><img src="./website_imgs/price_hist.png" width="700"/></center>
 
 ### Node2Vec
 
