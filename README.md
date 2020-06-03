@@ -125,7 +125,7 @@ The 'equal-length bins' is essentially equivalent to following a histogram appro
 
 The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
 </br>
-<center><img src="./website_imgs/price_hist.png"/></center></br>
+<center><img src="./website_imgs/price_hist.png" width="400"/></center>
 
 ### Node2Vec
 
@@ -133,7 +133,7 @@ Once we had the graphical embedding of our datasets, we used the node2vec model 
 
 For a node <em>n</em>, the goal is to learn a embedding f(n), such that it maximizes the probability of the context for that node, expressed as N<sub>S</sub>(n). The loss function can be expressed as:
 
-<center><img src="./website_imgs/loss_image.png" width="400"/></center>
+<center><img src="./website_imgs/loss_image.png" width="350"/></center>
 
 
 
