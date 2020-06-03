@@ -89,11 +89,56 @@ These tokens were used to represent three subgraphs:
 - $G_{EA}$: entity "is a" attribute
 - $G_{AA}$: attribute to attribute
 
-Here, an entity represents an unique row and a attribute represents a column value.
 
 As shown by the figure below, we have a unique entity node associated to a sample of attribute nodes. In the context of this problem, we would be treating $G_{EE}$ as being the ground-truth on which we are making our edge predictions. An edge would be formed between entities in the $G_{EE}$ in the case that those 2 entities represent the same object.
 
+
 ![ABT BUY-\ Sample Graph](./website_imgs/abt-buy-graph.PNG)
+
+There were many different types of columns to deal with in each of the datasets. We transformed these columns into usable data by identifying what type of variables they were and then applying a function to convert the columns into a usable format.
+
+## Ordinal and Categorical columns
+
+We dealt with ordinal and categorical columns by treating them as discrete values. For example, for textual analysis, we used a bagofwords approach in which each word is tokenized and embedded as discrete values. The sentence 'A blue car' would represent an edge to 'a', 'blue', and 'car' nodes and its respective entity node. In the effort of not allowing the size of our graph to explode, we removes words that were highly common by creating a cap on document frequency of any token in our vocabulary. This document frequency cap ignores the words that show up in a large number of entities, thus likely being less predictive. In the example of textual embedding, we believe that a bag of words approach is reasonable. Our task is in principle pattern matching, therefore the content of the text is naturally more useful than the sentiment or syntax of the text. An example of textual embedding can be seen in the figure below.
+
+![Example Textual Embedding](./images/example_textual_embedding.png){ width=70%}
+
+
+### Quantitative Columns
+
+For the quantitative columns, we decided to bin the data.
+This is because, if we chose to treat them as discrete values, there would be an unreasonably large amount of nodes within the graph and the mathematical notion of proximity would be lost. For example, two rows that have an attribute column price could have values $17 and $18 that would be as equally close as the prices $20 and $30 if treated as discrete values. In order to remedy this issue, we struck a balance by binning our quantitative columns. This allowed us to have a discrete representation while still preserving the notion of mathematical "closeness".
+
+We experimented with two strategies for binning:
+1. equal-length bins
+2. equal-density bins
+
+The 'equal-length bins' is essentially equivalent to following a histogram approximation of the quantitative variable. This naturally has the downside of creating bins that are very dense and very sparse. The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
+
+![Example Histogram of Prices](./images/price_hist.png){ width=50%}
+
+## Node2Vec
+
+Once we had the graphical embedding of our datasets, we used the node2vec model in order to create a feature representation. The Node2Vec algorithm is originally proposed by Aditya Grover and Jure Leskovec of Stanford University. It heavily relies on the idea of Word2Vec, which attempts to embed text into a Euclidian space based on the context that that word tends to be used.
+
+For a node $n$, the goal is to learn a embedding $f(n)$, such that it maximize the probability of the context for that node, expressed as $N_{S}(n)$. The loss function can be expressed as:
+
+$$\max_{f} \Sigma log(P(N_{S}(n)|f(n))$$
+
+
+In practical terms, this means that if two nodes are presented within a similar context, then the output of the embedder, $f(n)$ should produce similar embeddings. Though this method was originally built for word embedding, where the sentences are treated as the context for the words, the same framework can be extended to graphs by representing paths as stand-ins for a sentences.
+
+A flaw, however, is that there is no natural understanding of the what consitutes a reliable sample of paths within a graph. The node2vec arhictecture answers this issue with the idea of a parameterized random walk. This is essentially a method for sampling a path by creating a probability distribution parameterized by p (controlling the likelihood of returning to previous node), and q (controlling of how far to move away from current node)
+
+![Sampling Distribution](./images/node2vec_prob_dist.png){ width=40%}
+
+This sampling algorithm can be thought of as a hybrid of the traditional graph traversal algorithms, DFS and BFS. An example of this is below.
+
+![Node2Vec Sampling Diagram](./images/node2vec_plot.png){ width=40%}
+
+We believe that the Node2Vec algorithm is appropriate for our task, because of the intuition that two entities where the ground-truth is that they are the same should have a similar environment within the graph. For example, in the figure below, the two embeddings share similar features, such as 'Linksys' and 'switch'. Therefore, we can expect the 'community' that is found by the Random Walk algorithm to be more similar between these two nodes than a random sample of nodes.
+
+![Node2Vec Sampling Diagram](./images/node2vec_example.png){ width=40%}
 
 
 ## Baseline Models
@@ -109,4 +154,14 @@ As shown by the figure below, we have a unique entity node associated to a sampl
 --Shinu--
 
 ## Citations
-insert here
+- pdfs.semanticscholar.org/2404/eb5760ec2925c075c7968c845d2cc6fda73b.pdf.
+- sites.bu.edu/jbor/files/2018/10/Building-the-Cohort-10oct2018-1.pdf.
+- ajph.aphapublications.org/doi/10.2105/AJPH.36.12.1412.
+- www.tandfonline.com/doi/abs/10.1080/01621459.1969.10501049.
+- www.ncbi.nlm.nih.gov/pmc/articles/PMC3039555/.
+- science.sciencemag.org/content/130/3381/954.
+- cs.stanford.edu/jure/pubs/node2vec-kdd16.pdf
+- link.springer.com/content/pdf/10.1007%2F978-3-540-69534-9_41.pdf.
+- ceur-ws.org/Vol-1272/paper_17.pdf.
+- www.dit.unitn.it/~p2p/RelatedWork/Matching/713.pdf.
+- aspe.hhs.gov/report/studies-welfare-populations-data-collection-and-research-issues/two-methods-linking-probabilistic-and-deterministic-record-linkage-methods.
