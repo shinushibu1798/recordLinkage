@@ -113,13 +113,17 @@ We dealt with ordinal and categorical columns by treating them as discrete value
 ### Quantitative Columns
 
 For the quantitative columns, we decided to bin the data.
-This is because, if we chose to treat them as discrete values, there would be an unreasonably large amount of nodes within the graph and the mathematical notion of proximity would be lost. For example, two rows that have an attribute column price could have values $17 and $18 that would be as equally close as the prices $20 and $30 if treated as discrete values. In order to remedy this issue, we struck a balance by binning our quantitative columns. This allowed us to have a discrete representation while still preserving the notion of mathematical "closeness".
+This is because, if we chose to treat them as discrete values, there would be an unreasonably large amount of nodes within the graph and the mathematical notion of proximity would be lost.
+
+For example, two rows that have an attribute column called price could have values $17 and $18 that would be as equally close to the prices $20 and $30 if treated as discrete values. In order to remedy this issue, we struck a balance by binning our quantitative columns. This allowed us to have a discrete representation while still preserving the notion of mathematical "closeness".
 
 We experimented with two strategies for binning:
 1. equal-length bins
 2. equal-density bins
 
-The 'equal-length bins' is essentially equivalent to following a histogram approximation of the quantitative variable. This naturally has the downside of creating bins that are very dense and very sparse. The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
+The 'equal-length bins' is essentially equivalent to following a histogram approximation of the quantitative variable. This naturally has the downside of creating bins that are very dense and very sparse.
+
+The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
 
 ![Example Histogram of Prices](./website_imgs/price_hist.png){ width=50%}
 
@@ -164,7 +168,7 @@ Lastly, with the Author Disambiguation data set, we used a baseline that simply 
 Finally, we moved on to training our binary model. We decided to use two different models: Support Vector Machines(SVM) and Boosted Decision Trees or more specifically, AdaBoost.
 
 ### Support Vector Machines
-A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the the goal is to solve the optimization problem (where W is the margin between the support vectors, and $\zeta_i$ is the slackness parameter):
+A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the goal is to solve the optimization problem (where W is the margin between the support vectors, and $\zeta_i$ is the slackness parameter):
 
 $$minimie \,  (1/n)\,\sum_{i=1}^{n} \zeta_{i}\, + \lambda \, \|W\|$$
 $$Subjuct \, to \, y_{i}(w * x_{i} - b) > 1 - \zeta_{i}$$
@@ -179,8 +183,12 @@ A SVM classifier attempts to find the decision boundary that maximizes the dista
 ## Results
 --Wesley--
 
-## Any improvements we could have made
---Shinu--
+## Improvements we could have made
+
+Since record linkage is very dependent on the dataset, we could use techniques such as fuzzy word matching and hierarchical clustering to make the data more generalised so that it is easier to account for noise between matches in datasets.
+
+For the node2vec implementation, we made a naïve assumption that out sampling technique would simply translate over. However, this was not the case. Hence we would improve our model by refining our definition of a community to better fit this task rather than expect it to readily fit it as it is.
+
 
 ## Citations
 - pdfs.semanticscholar.org/2404/eb5760ec2925c075c7968c845d2cc6fda73b.pdf.
