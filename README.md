@@ -107,7 +107,7 @@ There were many different types of columns to deal with in each of the datasets.
 
 We dealt with ordinal and categorical columns by treating them as discrete values. For example, for textual analysis, we used a bagofwords approach in which each word is tokenized and embedded as discrete values. The sentence 'A blue car' would represent an edge to 'a', 'blue', and 'car' nodes and its respective entity node. In the effort of not allowing the size of our graph to explode, we removes words that were highly common by creating a cap on document frequency of any token in our vocabulary. This document frequency cap ignores the words that show up in a large number of entities, thus likely being less predictive. In the example of textual embedding, we believe that a bag of words approach is reasonable. Our task is in principle pattern matching, therefore the content of the text is naturally more useful than the sentiment or syntax of the text. An example of textual embedding can be seen in the figure below.
 
-![Example Textual Embedding](./images/example_textual_embedding.png){ width=70%}
+![Example Textual Embedding](./website_imgs/example_textual_embedding.png){ width=70%}
 
 
 ### Quantitative Columns
@@ -121,7 +121,7 @@ We experimented with two strategies for binning:
 
 The 'equal-length bins' is essentially equivalent to following a histogram approximation of the quantitative variable. This naturally has the downside of creating bins that are very dense and very sparse. The 'equal-density bins' allows for the formation of *k* bins where the bins are restricted to having an equal amount of data points. The goal of this is that it resolves the issue of sparse bins; however, the bounds of the bins are determined from the training data, which means that this method theoretically requires a higher amount of quality data to perform well.
 
-![Example Histogram of Prices](./images/price_hist.png){ width=50%}
+![Example Histogram of Prices](./website_imgs/price_hist.png){ width=50%}
 
 ### Node2Vec
 
@@ -136,22 +136,35 @@ In practical terms, this means that if two nodes are presented within a similar 
 
 A flaw, however, is that there is no natural understanding of the what constitutes a reliable sample of paths within a graph. The node2vec architecture answers this issue with the idea of a parameterized random walk. This is essentially a method for sampling a path by creating a probability distribution parameterized by p (controlling the likelihood of returning to a previous node), and q (controlling how far to move away from the current node)
 
-![Sampling Distribution](./images/node2vec_prob_dist.png){ width=40%}
+![Sampling Distribution](./website_imgs/node2vec_prob_dist.png){ width=40%}
 
 This sampling algorithm can be thought of as a hybrid of the traditional graph traversal algorithms, DFS and BFS. An example of this is below.
 
-![Node2Vec Sampling Diagram](./images/node2vec_plot.png){ width=40%}
+![Node2Vec Sampling Diagram](./website_imgs/node2vec_plot.png){ width=40%}
 
 We believe that the Node2Vec algorithm is appropriate for our task, because of the intuition that two entities where the ground-truth is that they are the same should have a similar environment within the graph. For example, in the figure below, the two embeddings share similar features, such as 'Linksys' and 'switch'. Therefore, we can expect the 'community' that is found by the Random Walk algorithm to be more similar between these two nodes than a random sample of nodes.
 
-![Node2Vec Sampling Diagram](./images/node2vec_example.png){ width=40%}
+![Node2Vec Sampling Diagram](./website_imgs/node2vec_example.png){ width=40%}
 
 
 ## Baseline Models
 --wesley--
 
 ## Description of our final model
---Shinu--
+Finally, we moved on to training our binary model. We decided to use two different models: Support Vector Machines(SVM) and Boosted Decision Trees or more specifically, AdaBoost.
+
+### Support Vector Machines
+A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the the goal is to solve the optimization problem (where W is the margin between the support vectors, and $\zeta_i$ is the slackness parameter):
+
+$$minimie \,  (1/n)\,\sum_{i=1}^{n} \zeta_{i}\, + \lambda \, \|W\|$$
+$$Subjuct \, to \, y_{i}(w * x_{i} - b) > 1 - \zeta_{i}$$
+
+A SVM classifier attempts to find the decision boundary that maximizes the distance to the closest data point from each class, which is also considered a support vector. Because the data may not linearly seperable, kernels and the slackness parameter can be used to increase the performance of the model.
+
+### Boosted Decision Trees/AdaBoost
+
+
+
 
 ## Results
 --Wesley--
