@@ -1,6 +1,6 @@
 ## Introduction
 Imagine you work at a hospital. You are treating a patient named John Doe and you need to look up his medical records. Upon searching the database, you stumble across this:
-<center><img src="./website_imgs/intro_img1.PNG"/></center></br>
+<center><img src="./website_imgs/intro_img1.PNG"/></center>
 How can we tell if John Doe from Hospital A is referring to the same John Doe from Hospital B? This is an example of a record linkage problem, the process of finding records across different data sets that correspond to the same entity. Without a distinct identifier (think ID for each patient) for an entity, this becomes a non-trivial problem. In our current age of big data, where data is becoming increasingly large and heterogeneous, being able to merge multiple datasets together accurately is an important task.  
 
 There are two primary schools of thought when it comes record linkage - deterministic record linkage and probabilistic record linkage. Deterministic record linkage uses rule-based algorithms, predicting that two records refer to the same entity if certain rules or thresholds are met. For example, one might say two records of patients from two different hospital data sets refer to the same entity if the name, date of birth, and city match exactly. As we can see from the example above, data sets can be noisy - different establishments may have different conventions for inputting data. Other forms of noise can come from missing data entries, incorrect data entries, or duplicate records. Clearly, deterministic record linkage will be difficult if the data is not clean.
@@ -150,10 +150,8 @@ We believe that the Node2Vec algorithm is appropriate for our task, because of t
 
 ## Baseline Models
 As with all machine learning pipelines, it's important to create baseline models to create baseline scores to measure final performance against. Using the data sets, we made some baseline models that did not depend on graphs. With the Amazon-Google, DBLP-ACM, DBLP Scholars, and Author Disambiguation dataset, we made rudimentary baseline models that use deterministic record linkage. Unsurprisingly, the baseline models depended heavily on the cleanliness of the datasets, as basic deterministic rules were used, such as checking if the titles of books matched. For the Abt-Buy dataset, we decided to create an advanced baseline that incorporates some machine learning, rather than use strict rules. In all of the baselines, we used the ground truth matches as positive examples and randomly sampled an equal number of negative examples.
-</br>
 <center><img src="./website_imgs/baseline_img1.PNG"/></center>
 <center><em>Our baseline accuracy results.</em></center>
-</br>
 With the DBLP-ACM dataset, the baseline was performed by checking the lower case titles from both datasets, as well as checking the year, to determine whether entities matched. Since the dataset has no missing values in either of these columns, this baseline performed extremely well, getting 100% accuracy. This is to be expected given the lack of missingness as well as the lack of 1-to-many entity matches. Clearly, the Author Disambiguation data set we use for our final implementation will not be this clean, and therefore this simplistic baseline should not perform nearly as well.
 
 With the DBLP-Scholar dataset, the baseline was performed by just checking the lower case titles from both datasets, as the year column has a large number of missing values. While the baseline gets every negative example correct, it only gets 47% of positive examples, for a total accuracy of 73%. With a single feature, this baseline performs poorly, but it is interesting to note that simply comparing lower case titles will achieve high accuracy on negative examples.
@@ -168,7 +166,7 @@ Lastly, with the Author Disambiguation data set, we used a baseline that simply 
 Finally, we moved on to training our binary model. We decided to use two different models: Support Vector Machines(SVM) and Boosted Decision Trees or more specifically, AdaBoost.
 
 ### Support Vector Machines
-A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the goal is to solve the optimization problem (where W is the margin between the support vectors, and &Zeta is the slackness parameter):
+A Support Vector Machine (SVM) is a machine learning algorithm originally developed in 1963 by Vladimir Vapnik in which the goal is to solve the optimization problem (where W is the margin between the support vectors, and zeta is the slackness parameter):
 
 <center><img src="./website_imgs/svm.png" width="350"/></center>
 
