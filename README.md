@@ -93,7 +93,7 @@ Here, an entity represents an unique row and a attribute represents a column val
 
 As shown by the figure below, we have a unique entity node associated to a sample of attribute nodes. In the context of this problem, we would be treating $G_{EE}$ as being the ground-truth on which we are making our edge predictions. An edge would be formed between entities in the $G_{EE}$ in the case that those 2 entities represent the same object.
 
-[[https://infogram.com/abt-buy-sample-graph-1h7v4p10k8pd4k0?live]]
+[[./website_imgs/abt-buy-graph.PNG]]
 
 
 ## Baseline Models
